@@ -28,7 +28,7 @@ namespace API_REST_UTILITARIOS.Controllers
             EmailModel resultado_operacion = new EmailModel(id,message);
 
             resultado_operacion.Id = "1";
-            resultado_operacion.Message = "PRUEBA DE CAMBIOS";
+            resultado_operacion.Message = "PRUEBA DE CAMBIOS 2.0";
 
             return resultado_operacion;
         }

@@ -12,11 +12,13 @@ using System.Web.Http;
 
 namespace API_REST_UTILITARIOS.Controllers
 {
+    [AllowAnonymous]
+    [RoutePrefix("api/Utilities")]
     public class UtilitiesController : ApiController
     {
 
         // GET: api/Utilities/Email/Send
-        [Route("api/Utilities/Email/Send")]
+        [Route("Email/Send")]
         [HttpPost]
         public IHttpActionResult Send(string from, string to, string subject, string text = null, string html = null)
         {

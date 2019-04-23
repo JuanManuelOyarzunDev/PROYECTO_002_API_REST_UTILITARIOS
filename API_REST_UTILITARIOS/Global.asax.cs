@@ -19,5 +19,20 @@ namespace API_REST_UTILITARIOS
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
+
+        protected void Application_BeginRequest(object sender, EventArgs e) //Not triggered with PUT
+        {
+
+            if (HttpContext.Current.Request.HttpMethod == "OPTIONS")
+            {
+                HttpContext.Current.Response.AddHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+                HttpContext.Current.Response.AddHeader("Access-Control-Allow-Origin", "*");
+                HttpContext.Current.Response.ClearHeaders();
+                HttpContext.Current.Response.End();
+
+            }
+        }
+
+
     }
 }

@@ -20,20 +20,16 @@ namespace API_REST_UTILITARIOS
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
 
-        protected void Application_BeginRequest(object sender, EventArgs e) //Not triggered with PUT
+        protected void Application_BeginRequest()
         {
-
-            if (HttpContext.Current.Request.HttpMethod == "OPTIONS")
+            var hhtp = HttpContext.Current.Request.HttpMethod;
+            if (hhtp == "OPTIONS" || hhtp == "PATCH" || hhtp == "PUT")
             {
-                HttpContext.Current.Response.AddHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-                HttpContext.Current.Response.AddHeader("Access-Control-Allow-Headers", "*");
-                HttpContext.Current.Response.AddHeader("Access-Control-Allow-Origin", "*");
-                HttpContext.Current.Response.ClearHeaders();
+                HttpContext.Current.Response.AddHeader("Access-Control-Allow-Methods", "GET, POST, PUT, PATCH, DELETE, OPTIONS");
+                HttpContext.Current.Response.AddHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+                HttpContext.Current.Response.AddHeader("Access-Control-Max-Age", "1728000");
                 HttpContext.Current.Response.End();
-
             }
         }
-
-
     }
 }

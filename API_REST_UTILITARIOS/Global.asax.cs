@@ -26,6 +26,7 @@ namespace API_REST_UTILITARIOS
             if (HttpContext.Current.Request.HttpMethod == "OPTIONS")
             {
                 HttpContext.Current.Response.AddHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+                HttpContext.Current.Response.AddHeader("Access-Control-Allow-Headers", "*");
                 HttpContext.Current.Response.AddHeader("Access-Control-Allow-Origin", "*");
                 HttpContext.Current.Response.ClearHeaders();
                 HttpContext.Current.Response.End();
